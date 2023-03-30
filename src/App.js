@@ -5,7 +5,6 @@ import { getAccessTokenFromResponse } from './spotify';
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDataLayer } from './DataLayer/DataLayerProvider';
 import Player from "./Components/Player";
-
 function App() {
 const [{token},dispatchUser] = useDataLayer();
 const spotify=new SpotifyWebApi();
@@ -29,7 +28,7 @@ useEffect(()=>{
     });
   },[])
 
-
+console.log("asdadsad");
   return (
        <div className='app'>
    {token ? <Player spotify={spotify}/>: <Login />}

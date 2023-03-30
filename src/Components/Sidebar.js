@@ -1,8 +1,8 @@
 import React from 'react';
-
+import './Sidebar.css'
 function Sidebar() {
     return (
-        <div className='sideBar'>
+        <div className='sidebar'>
         <h1>
         I am the sidebar
         </h1>
