@@ -1,0 +1,37 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__left{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    flex: 0.3;
+    min-width: 150px;
+    background-color: white;
+    border-radius: 30px;
+    color: grey;
+}
+
+.header__left > input{
+    font-family: inherit;
+    font-weight: 450;
+    padding: 3px;
+    border: none;
+    width: 80%;
+}
+.header__left > input:focus{
+    outline: none;
+}
+
+.header__right{
+    display: flex;
+    padding:10px;
+    align-items: center;
+}
+
+.header__right > strong {
+    margin-left: 10px;
+}

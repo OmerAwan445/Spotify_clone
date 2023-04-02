@@ -11,6 +11,4 @@ export function DataLayerProvider(props) {
 }
 
 // A custom hook to get the data and disptach function
-export const useDataLayer= () => useContext(DataLayer);
-
-
+export const useDataLayer= () => useContext(DataLayer)

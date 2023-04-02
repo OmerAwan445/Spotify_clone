@@ -2,13 +2,9 @@
 
 export const authEndpoint="https://accounts.spotify.com/authorize";
 
-const clientId="99c2ed831dca4b2f8515d4f5e4fe2cf8";
+const clientId="72e3c2b855f2439090eefd5f91424534";
 
 const redirectUri = 'http://localhost:3000/';
-
-// http://localhost:3000/#access_token=BQByms9KKq6gBDnIuFJ_9h-9Ys-G0NLYFLkVETc9KdiRcWn6sXEGQhdcodvb1Z2zdoAK5Z-4
-// CxQVJsMPK5GO9mQDDpqTeO3OQ44MfdQO5isBlpuePH55H-55e1aN8UG6zmkTZPdUoscVeZOdP4_JnsDFvW7wRq8kwjRY96vnc-
-// 83RrxvjIMeeymvyNHneOn-GpQO-iGfNpdVWwuP1CDoIBw&token_type=Bearer&expires_in=3600
 
 const scopes = [
     "user-read-currently-playing",

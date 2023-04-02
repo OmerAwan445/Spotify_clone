@@ -1,0 +1,28 @@
+.sidebar{
+    border: 1px solid black;
+    flex: 0.15;
+    min-width: 160px;
+    height: 100vh;
+    padding:10px 20px;
+    color: white;
+    background-color: #040404;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+}
+
+
+
+.sidebar__logo{
+    height: 55px;
+    margin-bottom: 20px;
+    margin-right: auto;
+}
+
+.sidebar >hr{
+    margin: 10px 0px;
+}
+
+.playlist:hover{
+    overflow-y: overlay;
+}
