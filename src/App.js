@@ -10,27 +10,29 @@ function App() {
   const [{token,playlistTracks,playlistInfo}, dispatchUser] = useDataLayer();
   const spotify = new SpotifyWebApi();
 
-console.log(token);
-console.log(playlistInfo,playlistTracks)
+  /* Remove that too when project is finished */
+  spotify.setAccessToken("BQCZACBrrXDIeNtHca1ZNTGjDnmYbhUAPrDCEZ9bqG2iTYMd3nJGH8Oo47ZZJ7mMIPo0g75lv7JT2hFfeaffy0tHDiXy9So8Q9Flx1GCLqSna_uNuWq0AT80YoKcv3SjglwPnWPSpIuaiPT5nW9CC056T4k1MQNHZUb4YQrEE8nO2o14-IpRWAOpjPxlYc6rdg8DCbVRAKtnIFbSC2kl5w");
 
-// Temporary function to save data in local storage so that i dont have to login again
+  // Temporary function to save data in local storage so that i dont have to login again
 function saveToLocalStorage (name,items){
   window.localStorage.setItem(name,JSON.stringify(items))
 }
+
   useEffect(() => {
      const hash = getAccessTokenFromResponse();
     const { access_token } = hash;
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
     if (!access_token) return;
+    spotify.setAccessToken(access_token);
+    saveToLocalStorage("token",access_token);
     dispatchUser({
       type: "SET_TOKEN",
       token: access_token,
     })
-    spotify.setAccessToken(access_token);
     spotify.getMe().then(user => {
-      saveToLocalStorage("user",user);
     /* Uncomment when finished the project */
+    saveToLocalStorage("user",user);
     dispatchUser({
         type: 'SET_USER',
         user: user,
@@ -43,22 +45,19 @@ function saveToLocalStorage (name,items){
         playlist: playlist,
       })
     })
-    /* Saving the playlist Info(img,name) and playlist Tracks in Context */
+
+    /* Saving the Playlist All Info(including Tracks)  in Context */
+    /* When app is logged in it will be Discover Weekly playlist
+    because id here is given of discover weekly playlist */
     spotify.getPlaylist(DISCOVER_WEEKLY_PLAYLIST).then(playlist => {
       saveToLocalStorage("playlistInfo",playlist);
-      saveToLocalStorage("playlistTracks",playlist.tracks.items);
       dispatchUser ({
         type: 'SET_PLAYLIST_INFO',
         playlistInfo: playlist,
       })
-      dispatchUser ({
-        type: 'SET_PLAYLIST_TRACKS',
-        playlistTracks: playlist.tracks.items,
-      })
     })
-  }, [])
+    }, [])
 // window.localStorage.clear();
-
 return (
     <div className='app'>
       {token ? <Player spotify={spotify} /> : <Login />}

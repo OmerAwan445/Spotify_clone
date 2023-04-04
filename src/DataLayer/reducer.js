@@ -4,7 +4,7 @@ export const initialState={
     playing:false,
     playlistInfo:null,
     playlistTracks:null,
-    token:'BQC31Mi66Cs1a2qv5NPojEsZlime0ncwb56H9zw6FMWIInnaCq3TbyDF6sL_tMOr0j_Yz-FcpPqjWGjN7d4l_RMnLj1bDJcDryxd5XlpL6TDfVhOxWNXQ-B3qBYvikF9E4BYXo_onlqWAy6Xb5bxovxagMqXhLgTGQ7IIGCCBaWFiLe4DfLzc7M5kd-3D9E9YRC2BLIFv0KCJ4rLk_6qYg'
+    token:  JSON.parse(window.localStorage.getItem('token'))
 };
 
 

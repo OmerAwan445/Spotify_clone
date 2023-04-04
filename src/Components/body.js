@@ -8,9 +8,9 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from './SongRow'
 
 function Body() {
-  const [{playlistInfo,playlistTracks}] = useDataLayer();
+  const [{playlistInfo}] = useDataLayer();
   /* An Asyn function is made which will fetch the data from any url which will be given to it */
- /*  useEffect(()=>{
+  /*  useEffect(()=>{
     async function fetchProfile(url){
       const result = await fetch(url, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
@@ -23,8 +23,6 @@ function Body() {
   fetchProfile("https://api.spotify.com/v1/playlists/7k4VxWbOMI38IrS2LtJdBM/tracks");
 
 }) */
-
-  // console.log(playlistTracks);
 
   return (
       <div className='_body'>
@@ -58,7 +56,7 @@ function Body() {
       </div>
 
       <ol className='body__songRow__container'>
-      {playlistTracks?.map((item,index) =>
+      {playlistInfo?.tracks?.items?.map((item,index) =>
         <SongRow songNo={index+1} key={item.track.id} item={item}/>
         )}
         </ol>
@@ -67,8 +65,6 @@ function Body() {
         </div>
        </div>
       </div>
-      {/* playlistInfo?.tracks?.items?.map.track.name */}
-      {/* playlistInfo?.tracks?.items?.track.artists.map.name */}
       </div>
       );
 }

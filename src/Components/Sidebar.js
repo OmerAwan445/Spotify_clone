@@ -6,31 +6,19 @@ import SearchIcon from '@mui/icons-material/Search';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
 
-function Sidebar() {
-  const [{token,playlist},dispatchUser]=useDataLayer();
-
-  // when clicked grab the id and make a call on tracks along id and
-  // handover the items to context and when context is chnaged the body is updated.
- async function handlerShowPlaylistItems (id){
+function Sidebar({spotify}) {
+  const [{playlist},dispatchUser]=useDataLayer();
+  // handover the items to context and when context is changed the body is updated.
+ function handlerShowPlaylistItems (id){
     // Making a call with id and returing the data
-async function fetchProfile(url){
-  const result = await fetch(url, {
-    method: "GET", headers: { Authorization: `Bearer ${token}` }
-});
-const data=await result.json();
-// console.log(data,id);
-return data;
-}
- const playlist= await fetchProfile(`https://api.spotify.com/v1/playlists/${id}/tracks`);
-  if(!playlist)return;
-  console.log(playlist);
-  dispatchUser ({
-    type: 'SET_PLAYLIST_INFO',
-    playlist_info: playlist,
+    spotify.getPlaylist(id).then(playlist => {
+      console.log(playlist);
+      dispatchUser ({
+        type: 'SET_PLAYLIST_INFO',
+        playlistInfo: playlist,
+      })
   })
-
-}
-  // console.log(playlist);
+  }
   return (
     <div className='sidebar'>
     <img
