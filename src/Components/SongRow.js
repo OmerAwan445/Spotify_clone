@@ -29,7 +29,7 @@ return (
         </div>
         </div>
         <h5>{songName}</h5>
-        <h5>{`${addedDaysAgo} days ago`}</h5>
+        <h5>{addedDaysAgo === 0 ? `Today` : `${addedDaysAgo} days ago`}</h5>
         </li>
 
         );

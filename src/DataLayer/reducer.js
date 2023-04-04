@@ -2,13 +2,12 @@ export const initialState={
     user:null,
     playlist:[],
     playing:false,
-    item:null,
-    discover_weekly:null,
-    token:'BQDhKi-HA9-GYtJLAv2EO0983Yelyq6gYbG1TYdRW3mTSdxwgxNshPXiLqUEERcz4dEcogt2RWmrV-TkPzaGvDEV65-TaYOEXFD2PyaI9OhLqm8z_yJRoPcuvwa42HZXehg_xZgdXJD6OPrapVmrrYk74YwRLGd-fkBjmSvga7TVR91w1lhhvmZCZqb-uVTfOtob9RChMoBD-geedoEmZg'
+    playlistInfo:null,
+    playlistTracks:null,
+    token:'BQC31Mi66Cs1a2qv5NPojEsZlime0ncwb56H9zw6FMWIInnaCq3TbyDF6sL_tMOr0j_Yz-FcpPqjWGjN7d4l_RMnLj1bDJcDryxd5XlpL6TDfVhOxWNXQ-B3qBYvikF9E4BYXo_onlqWAy6Xb5bxovxagMqXhLgTGQ7IIGCCBaWFiLe4DfLzc7M5kd-3D9E9YRC2BLIFv0KCJ4rLk_6qYg'
 };
 
-// user?.images?[0].url
-// user.display_name
+
 export function dataReducer(state,action){
 
     switch(action.type){
@@ -23,17 +22,23 @@ export function dataReducer(state,action){
         token:action.token,
     }
 
-    case 'SET_PLAYLIST':
+    case 'SET_PLAYLISTS':
     return{
         ...state,
         playlist:action.playlist,
     }
 
-    case 'SET_DISCOVER_WEEKLY':
+    case 'SET_PLAYLIST_INFO':
     return{
         ...state,
-        discover_weekly:action.discover_weekly,
+        playlistInfo:action.playlistInfo,
     }
+    case 'SET_PLAYLIST_TRACKS':
+    return{
+        ...state,
+        playlistTracks:action.playlistTracks,
+    }
+
     default: {
         throw Error('Unkown Error ' + action.type);
     }

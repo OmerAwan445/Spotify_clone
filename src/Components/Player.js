@@ -7,7 +7,6 @@ import './Player.css'
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
 function Player(props) {
   const [{user},dispatchUser] =useDataLayer();
-//  console.log(user);
   // temporaray function to set context from local storage to prevent login
   function setContextFromLS(){
     dispatchUser({
@@ -16,13 +15,17 @@ function Player(props) {
     })
 
     dispatchUser({
-      type: 'SET_PLAYLIST',
+      type: 'SET_PLAYLISTS',
       playlist: JSON.parse(window.localStorage.getItem("playlist")),
     })
     dispatchUser ({
-        type: 'SET_DISCOVER_WEEKLY',
-        discover_weekly: JSON.parse(window.localStorage.getItem("discover_weekly")),
-      })
+      type: 'SET_PLAYLIST_INFO',
+      playlistInfo: JSON.parse(window.localStorage.getItem("playlistInfo")),
+    })
+    dispatchUser ({
+      type: 'SET_PLAYLIST_TRACKS',
+      playlistTracks: JSON.parse(window.localStorage.getItem("playlistTracks")),
+    })
   }
 useEffect(()=>{
 if(!user) setContextFromLS();

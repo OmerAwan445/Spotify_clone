@@ -8,10 +8,9 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from './SongRow'
 
 function Body() {
-  const [{token,discover_weekly}] = useDataLayer();
-
+  const [{playlistInfo,playlistTracks}] = useDataLayer();
   /* An Asyn function is made which will fetch the data from any url which will be given to it */
-  useEffect(()=>{
+ /*  useEffect(()=>{
     async function fetchProfile(url){
       const result = await fetch(url, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
@@ -21,19 +20,22 @@ function Body() {
   return data;
   }
 
-  fetchProfile("https://api.spotify.com/v1/artists/4Z8W4fKeB5YxbusRsdQVPb");
+  fetchProfile("https://api.spotify.com/v1/playlists/7k4VxWbOMI38IrS2LtJdBM/tracks");
 
-})
+}) */
+
+  // console.log(playlistTracks);
+
   return (
       <div className='_body'>
       <div className='discover__weekly'>
       <Header />
       <div className='body__info'>
-      <img src={discover_weekly?.images[0]?.url} alt=""/>
+      <img src={playlistInfo?.images[0]?.url} alt=""/>
       <div className='body__infoText'>
       <strong>PLAYLIST</strong>
-      <h1>Discover Weekly</h1>
-      <p>{discover_weekly?.description}</p>
+      <h1>{playlistInfo?.name}</h1>
+      <p>{playlistInfo?.description}</p>
       </div>
       </div>
       </div>
@@ -56,7 +58,7 @@ function Body() {
       </div>
 
       <ol className='body__songRow__container'>
-      {discover_weekly?.tracks?.items.map((item,index) =>
+      {playlistTracks?.map((item,index) =>
         <SongRow songNo={index+1} key={item.track.id} item={item}/>
         )}
         </ol>
@@ -65,8 +67,8 @@ function Body() {
         </div>
        </div>
       </div>
-      {/* discover_weekly?.tracks?.items?.map.track.name */}
-      {/* discover_weekly?.tracks?.items?.track.artists.map.name */}
+      {/* playlistInfo?.tracks?.items?.map.track.name */}
+      {/* playlistInfo?.tracks?.items?.track.artists.map.name */}
       </div>
       );
 }
