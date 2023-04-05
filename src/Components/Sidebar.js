@@ -7,12 +7,11 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
 
 function Sidebar({spotify}) {
-  const [{playlist},dispatchUser]=useDataLayer();
-  spotify.setAccessToken(JSON.parse(window.localStorage.getItem("token")));
+  const [{playlist,token},dispatchUser]=useDataLayer();
+  spotify.setAccessToken(token);
   // handover the items to context and when context is changed the body is updated.
   function handlerShowPlaylistItems (id){
-    /* Remove this when project is finished */
-   // Making a call with id and returing the data
+    // Making a call with id and returing the data
     spotify.getPlaylist(id).then(playlist => {
       console.log(playlist);
       dispatchUser ({
