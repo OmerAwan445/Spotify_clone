@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import {React,useEffect} from 'react';
 import './Body.css'
 import Header from './Header';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
@@ -8,22 +8,9 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from './SongRow'
 
 function Body() {
+
+  // Track id is "15JINEqzVMv3SvJTAXAKED"
   const [{playlistInfo}] = useDataLayer();
-  /* An Asyn function is made which will fetch the data from any url which will be given to it */
-  /*  useEffect(()=>{
-    async function fetchProfile(url){
-      const result = await fetch(url, {
-        method: "GET", headers: { Authorization: `Bearer ${token}` }
-    });
-  const data=await result.json();
-  console.log(data);
-  return data;
-  }
-
-  fetchProfile("https://api.spotify.com/v1/playlists/7k4VxWbOMI38IrS2LtJdBM/tracks");
-
-}) */
-
   return (
       <div className='_body'>
       <div className='discover__weekly'>

@@ -6,7 +6,6 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import ShuffleIcon from "@mui/icons-material/Shuffle";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import "./Footer.css";

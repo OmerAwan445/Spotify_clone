@@ -8,9 +8,11 @@ import { useDataLayer } from '../DataLayer/DataLayerProvider';
 
 function Sidebar({spotify}) {
   const [{playlist},dispatchUser]=useDataLayer();
+  spotify.setAccessToken(JSON.parse(window.localStorage.getItem("token")));
   // handover the items to context and when context is changed the body is updated.
- function handlerShowPlaylistItems (id){
-    // Making a call with id and returing the data
+  function handlerShowPlaylistItems (id){
+    /* Remove this when project is finished */
+   // Making a call with id and returing the data
     spotify.getPlaylist(id).then(playlist => {
       console.log(playlist);
       dispatchUser ({

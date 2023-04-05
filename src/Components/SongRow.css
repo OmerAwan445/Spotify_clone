@@ -17,18 +17,24 @@
     overflow: hidden;
     column-gap: 10px;
 }
+/* .body__songRow > * selects only direct children
+while .body__songRow  * selects all childs and subchilds etc*/
+
 .songRow__detail > img{
     width: 40px;
     height: 40px;
 }
 
-.body__songRow *{
+.songRow__discprition{min-width: 40%;}
+
+.songRow__discprition * , .songRow__detail ~ h5 {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
 .songRow__discprition > a {
+    display: block;
     color: white;
     text-decoration: none;
 }

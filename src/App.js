@@ -5,13 +5,14 @@ import { getAccessTokenFromResponse } from './spotify';
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDataLayer } from './DataLayer/DataLayerProvider';
 import Player from "./Components/Player";
+import fetchData from './fetchData';
 function App() {
   const DISCOVER_WEEKLY_PLAYLIST = "37i9dQZEVXcI8s6ltqTt2X";
-  const [{token,playlistTracks,playlistInfo}, dispatchUser] = useDataLayer();
+  const [{token}, dispatchUser] = useDataLayer();
   const spotify = new SpotifyWebApi();
-
+  // console.log(token);
   /* Remove that too when project is finished */
-  spotify.setAccessToken("BQCZACBrrXDIeNtHca1ZNTGjDnmYbhUAPrDCEZ9bqG2iTYMd3nJGH8Oo47ZZJ7mMIPo0g75lv7JT2hFfeaffy0tHDiXy9So8Q9Flx1GCLqSna_uNuWq0AT80YoKcv3SjglwPnWPSpIuaiPT5nW9CC056T4k1MQNHZUb4YQrEE8nO2o14-IpRWAOpjPxlYc6rdg8DCbVRAKtnIFbSC2kl5w");
+  // spotify.setAccessToken(JSON.stringify(window.localStorage.getItem("token")));
 
   // Temporary function to save data in local storage so that i dont have to login again
 function saveToLocalStorage (name,items){
@@ -45,7 +46,6 @@ function saveToLocalStorage (name,items){
         playlist: playlist,
       })
     })
-
     /* Saving the Playlist All Info(including Tracks)  in Context */
     /* When app is logged in it will be Discover Weekly playlist
     because id here is given of discover weekly playlist */
@@ -55,8 +55,19 @@ function saveToLocalStorage (name,items){
         type: 'SET_PLAYLIST_INFO',
         playlistInfo: playlist,
       })
+   const currentPlayingTrackdata = fetchData("https://api.spotify.com/v1/me/player/currently-playing",token);
+   if(currentPlayingTrackdata !== ''){
+    const {items}=currentPlayingTrackdata;
+      // const currently_playing_track ={
+      //   id:
+      // }
+      // dispatchUser ({
+      //   type: 'SET_CURRENTLY_PLAYING_TRACK',
+      //   playlistInfo: playlist,
+      // })
+    }
     })
-    }, [])
+    },[])
 // window.localStorage.clear();
 return (
     <div className='app'>
