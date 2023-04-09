@@ -19,8 +19,8 @@ function App() {
     let { access_token } = hash;
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
-    /* Remove this when project is finished */
-    access_token='BQB7ukwQ448kBcvoSPriO2M6jl4swjDiX5q0EZHK99bNzRYRnJlC4DsUyr1Th9FnPRTy68YGDGcT2IzAqDIvm_HklaVUJTdZVlqHMZMXYTzK2p0oKR8SitMWp1Xylq0NZ1HNFQAhfO2C-h71JLukqHPVcEF3cM5Z3Y3V4-U1ywtW3LEyEM8IstlEtYrTx6Sd6Abc121Z4JspD-ZiaNm-Kw'
+    // /* Remove this when project is finished */
+    // access_token='BQC6xXUspcABtTe2RcPPgkrYGf21wdXmalHMYsR_UctLw10yktKlpi-kKRiwk3Vp92J13m0dF_k5E4wpu3OvkThcsdbfLTeaKC1v58CsdHBhQ-q4XIBqErMBrgzHH0RwkvL0HaA0mT7FN3UavJ6WfKedTIg9ag_XrMWmzgvuEjI_X0UX1-OTINu29PLA95orbUNPLwWSBZen4zOoW9YWIg'
     if (!access_token) return;
     console.log("App");
     spotify.setAccessToken(access_token);
