@@ -13,13 +13,12 @@ function Sidebar({spotify}) {
   function handlerShowPlaylistItems (id){
     // Making a call with id and returing the data
     spotify.getPlaylist(id).then(playlist => {
-      console.log(playlist);
       dispatchUser ({
         type: 'SET_PLAYLIST_INFO',
         playlistInfo: playlist,
       })
   })
-  }
+}
   return (
     <div className='sidebar'>
     <img

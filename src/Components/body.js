@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React,{useEffect} from 'react';
 import './Body.css'
 import Header from './Header';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
@@ -8,10 +8,23 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import SongRow from './SongRow'
 
 function Body() {
-
+  const [{token}, dispatchUser] = useDataLayer();
+  // console.log(token);
+  useEffect(()=>{
+//   async function fetchData(url){
+//     const result = await fetch(url, {
+//       method: "POST",
+//       headers: { Authorization: `Bearer ${token}` },
+//     });
+// const data=await result;
+// console.log(data);
+// return data;
+// }
+// fetchData("https://api.spotify.com/v1/me/player/next");
+  },[])
   // Track id is "15JINEqzVMv3SvJTAXAKED"
   const [{playlistInfo}] = useDataLayer();
-  return (
+   return (
       <div className='_body'>
       <div className='discover__weekly'>
       <Header />
@@ -56,4 +69,4 @@ function Body() {
       );
 }
 
-export default Body;
+export default React.memo(Body);

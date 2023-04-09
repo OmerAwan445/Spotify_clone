@@ -2,7 +2,8 @@ import React from 'react';
 import './SideBarOption.css'
 function SideBarOption({Icon,option,id,handlerShowPlaylistItems}) {
     return (
-    <div onClick={()=>handlerShowPlaylistItems(id)} className = "sidebar_option">
+        /* home,search and library has Icon so they will not have any onclick handler */
+    <div onClick={Icon ? ()=>{} :()=>handlerShowPlaylistItems(id) } className = "sidebar_option">
     {Icon && <Icon className='icon'/>}
     {Icon ? <h4>{option}</h4> : <p>{option}</p>}
     </div>
