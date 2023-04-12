@@ -7,22 +7,20 @@ import SpotifyWebApi from 'spotify-web-api-js'
 import { useDataLayer } from './DataLayer/DataLayerProvider';
 import Player from "./Components/Player";
 import fetchCurrentTrack from './Components/fetchCurrentTrack';
-function App() {
-  const DISCOVER_WEEKLY_PLAYLIST = "37i9dQZEVXcI8s6ltqTt2X";
-  const [{token,currentTrack}, dispatchUser] = useDataLayer();
-  const spotify = new SpotifyWebApi();
-  // console.log(token);
-  // console.log(currentTrack);
 
+const spotify = new SpotifyWebApi();
+function App() {
+  // It is my discover weekly playlist any playlist id can be added
+  const DISCOVER_WEEKLY_PLAYLIST = "37i9dQZEVXcI8s6ltqTt2X";
+  const [{token}, dispatchUser] = useDataLayer();
+  // console.log(token);
   useEffect(() => {
-     const hash = getAccessTokenFromResponse();
+    const hash = getAccessTokenFromResponse();
     let { access_token } = hash;
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
     // /* Remove this when project is finished */
-    // access_token='BQC6xXUspcABtTe2RcPPgkrYGf21wdXmalHMYsR_UctLw10yktKlpi-kKRiwk3Vp92J13m0dF_k5E4wpu3OvkThcsdbfLTeaKC1v58CsdHBhQ-q4XIBqErMBrgzHH0RwkvL0HaA0mT7FN3UavJ6WfKedTIg9ag_XrMWmzgvuEjI_X0UX1-OTINu29PLA95orbUNPLwWSBZen4zOoW9YWIg'
     if (!access_token) return;
-    console.log("App");
     spotify.setAccessToken(access_token);
     dispatchUser({
       type: "SET_TOKEN",
@@ -40,13 +38,19 @@ function App() {
         type: 'SET_PLAYLISTS',
         playlist: playlist,
       })
-
       fetchCurrentTrack("https://api.spotify.com/v1/me/player/currently-playing",access_token)
-      .then(currentTrackData =>{
+      .then((data) =>{
+        if(!data) return;
+        // data is returning the currentTrackdata and is_playing Property
+        const {currentTrackData,is_playing} = data;
         dispatchUser ({
           type: 'SET_CURRENTLY_PLAYING_TRACK',
           currentTrack: currentTrackData,
         })
+        dispatchUser  ({
+          type: 'SET_ISPLAYING',
+          is_playing: is_playing,
+        });
       })
     })
     /* Saving the Playlist All Info(including Tracks)  in Context */
@@ -66,4 +70,4 @@ return (
   );
 }
 
-export default App;
+export default App

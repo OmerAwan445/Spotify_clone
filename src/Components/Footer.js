@@ -9,7 +9,7 @@ import CurrentTrack from './CurrentTrack';
 import PlaybackControls from './PlaybackControls';
 // @mui/icons-material/Search
 function Footer() {
-    return (
+   return (
         <div className="footer">
         <div className="footer__left">
           <CurrentTrack />

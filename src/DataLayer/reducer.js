@@ -5,7 +5,7 @@ export const initialState={
     playlistInfo:null,
     playlistTracks:null,
     currentTrack:null,
-    token: ''
+    token:''
 };
 
 
@@ -43,6 +43,11 @@ export function dataReducer(state,action){
     return{
         ...state,
         currentTrack:action.currentTrack,
+    }
+    case 'SET_ISPLAYING':
+    return{
+        ...state,
+        playing:action.is_playing,
     }
 
     default: {

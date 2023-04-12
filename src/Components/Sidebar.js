@@ -7,11 +7,10 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
 
 function Sidebar({spotify}) {
-  const [{playlist,token},dispatchUser]=useDataLayer();
-  spotify.setAccessToken(token);
+  const [{playlist},dispatchUser] = useDataLayer();
   // handover the items to context and when context is changed the body is updated.
   function handlerShowPlaylistItems (id){
-    // Making a call with id and returing the data
+    // Making a call with id and returing the tracks of playlist which is updating body SongRow
     spotify.getPlaylist(id).then(playlist => {
       dispatchUser ({
         type: 'SET_PLAYLIST_INFO',

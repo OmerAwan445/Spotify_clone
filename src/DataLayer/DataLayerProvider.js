@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import {initialState , dataReducer} from './reducer';
-const DataLayer = createContext({});
+export const DataLayer = createContext({});
 
 export function DataLayerProvider(props) {
     return (
