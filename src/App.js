@@ -20,6 +20,7 @@ function App() {
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
     // /* Remove this when project is finished */
+    access_token='BQA2llBl47PjW5_19_oKInjV0vlgBiETfbWn9Pwk8xaRtmQ8wHvW-FgtVAtlBHX3gFEyXeAXd-AJY4ju_KI94K5rqNZLroBWPgEsoYGHt7jTuzE2Jz2fLzO05jkqnYnJq5NcH3VXwXi7dUpaKzvATO-wQSSvIJO6R4RBUdPmzuapPUymKRJdkoZXy_o036qmN5x3bbyL3swJte88MZfqmA'
     if (!access_token) return;
     spotify.setAccessToken(access_token);
     dispatchUser({

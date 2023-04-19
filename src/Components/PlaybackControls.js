@@ -11,20 +11,19 @@ import './PlaybackControls.css'
 
 function PlaybackControls() {
 
-  const [{token,playing},dispatchUser] = useDataLayer();
+  const [{token,is_playing,currentTrack},dispatchUser] = useDataLayer();
 
   async function handlerNextPreviousTrack(type) {
     const url = `https://api.spotify.com/v1/me/player/${type}`;
-
     try {
-      await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    await fetch(url, {
+    method: "POST",
+    headers: {
+    Authorization: `Bearer ${token}`,
+    },
+    });
 
-      // Fetch current track data
+    // Fetch current track data
       const data = await fetchCurrentTrack("https://api.spotify.com/v1/me/player/currently-playing", token);
       if(!data) return;
       const {currentTrackData , is_playing}=data;
@@ -45,11 +44,28 @@ function PlaybackControls() {
 }
 }
 
+// console.log(currentTrack);
 
-  function handlerToggleResumeStart(){
+ async function handlerToggleResumeStart(type){
+    const url = `https://api.spotify.com/v1/me/player/${type}`;
+    try {
+      await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify({
+          "uris": [`spotify:track:${currentTrack.id}`],
+          }),
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+      });
+    }
+    catch(error){
+      console.error(error);
+    }
     dispatchUser  ({
       type: 'SET_ISPLAYING',
-      is_playing: !playing,
+      is_playing: !is_playing,
     });
 
   }
@@ -60,13 +76,13 @@ function PlaybackControls() {
         <SkipPreviousIcon
         onClick={()=>{handlerNextPreviousTrack("previous")}}
         className="footer__icon" />
-        { playing ?
+        { is_playing ?
         <PauseCircleIcon
-        onClick={()=>{handlerToggleResumeStart()}}
+        onClick={()=>{handlerToggleResumeStart("pause")}}
         fontSize="large"
         className="footer__icon" /> :
         <PlayCircleOutlineIcon
-        onClick={()=>{handlerToggleResumeStart()}}
+        onClick={()=>{handlerToggleResumeStart("play")}}
         fontSize="large"
         className="footer__icon" />
       }

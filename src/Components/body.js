@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import './Body.css'
 import Header from './Header';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
