@@ -1,13 +1,11 @@
 import React from 'react';
-import './Footer.css'
-// import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
-import "./Footer.css";
+import "../Styles/Footer.css";
 import { Grid, Slider } from "@mui/material";
 import CurrentTrack from './CurrentTrack';
 import PlaybackControls from './PlaybackControls';
-// @mui/icons-material/Search
+
 function Footer() {
    return (
         <div className="footer">

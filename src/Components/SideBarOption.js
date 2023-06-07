@@ -1,5 +1,5 @@
 import React from 'react';
-import './SideBarOption.css'
+import '../Styles/SideBarOption.css'
 function SideBarOption({Icon,option,id,handlerShowPlaylistItems}) {
     return (
         /* home,search and library has Icon so they will not have any onclick handler */

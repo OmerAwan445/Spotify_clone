@@ -20,7 +20,7 @@ function App() {
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
     // /* Remove this when project is finished */
-    access_token='BQA2llBl47PjW5_19_oKInjV0vlgBiETfbWn9Pwk8xaRtmQ8wHvW-FgtVAtlBHX3gFEyXeAXd-AJY4ju_KI94K5rqNZLroBWPgEsoYGHt7jTuzE2Jz2fLzO05jkqnYnJq5NcH3VXwXi7dUpaKzvATO-wQSSvIJO6R4RBUdPmzuapPUymKRJdkoZXy_o036qmN5x3bbyL3swJte88MZfqmA'
+    access_token='BQBfaXUlX8aC_Ln-DEl4Lapw0m6I8HcbIT8_jZdqsB-3cOjXKzpU_LdrQXOz20O6VGepBaZ7ZYp5xrvub-n1UpcrlUs---AQoYZykix_c3dM1Rvd0uEclSCMlUgAivgPazpIYPnpGM9jjNMX1LosIIAPZVio8RcgaaTnaWV7HJj-CqbgsDSznaZZDH-gPbflAnotbnLyLc7UMD_bdxtH'
     if (!access_token) return;
     spotify.setAccessToken(access_token);
     dispatchUser({
@@ -28,7 +28,6 @@ function App() {
       token: access_token,
     })
     spotify.getMe().then(user => {
-    /* Uncomment when finished the project */
     dispatchUser({
         type: 'SET_USER',
         user: user,

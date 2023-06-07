@@ -1,5 +1,5 @@
 import React from 'react';
-import './SongRow.css'
+import '../Styles/SongRow.css'
 function SongRow({item,songNo}) {
 function getaddedDaysAgoDiffFromDate(addedDate){
   const todayDate = new Date();

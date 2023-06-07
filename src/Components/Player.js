@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Body from './Body';
-import './Player.css'
+import '../Styles/Player.css'
 function Player(props) {
   return (
         <div className='player'>

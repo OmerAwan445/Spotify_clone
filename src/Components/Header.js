@@ -2,7 +2,7 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import Avatar from '@mui/material/Avatar';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
-import './Header.css';
+import '../Styles/Header.css';
 function Header() {
     const [{user}]=useDataLayer();
 

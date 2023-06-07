@@ -5,7 +5,7 @@ export const initialState={
     playlistInfo:null,
     playlistTracks:null,
     currentTrack:null,
-    token:'BQAVPnDD3Ve-3Yu2iJn9Ba8BqhdipISG9Q_RUMzfFNzmLXne4x05S7_Za7idJ8TD-TjsMzi7oqPtEeZ6Rosmb7jg5rFT34E3PDYkBj1pB_PjoKVrpg3wAtlDUt4UQaAxkvXDw29fG-hzRflbKylQmrdWREA3iuaJl5qU84lCu58jo3EgNNyllVxJell3c9RYpVNOWDVxGYZ0UAmyNnSnVA'
+    token:'BQBfaXUlX8aC_Ln-DEl4Lapw0m6I8HcbIT8_jZdqsB-3cOjXKzpU_LdrQXOz20O6VGepBaZ7ZYp5xrvub-n1UpcrlUs---AQoYZykix_c3dM1Rvd0uEclSCMlUgAivgPazpIYPnpGM9jjNMX1LosIIAPZVio8RcgaaTnaWV7HJj-CqbgsDSznaZZDH-gPbflAnotbnLyLc7UMD_bdxtH'
 };
 
 

@@ -7,44 +7,42 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
 import fetchCurrentTrack from './fetchCurrentTrack';
-import './PlaybackControls.css'
+import '../Styles/PlaybackControls.css'
 
 function PlaybackControls() {
-
   const [{token,is_playing,currentTrack},dispatchUser] = useDataLayer();
 
-  async function handlerNextPreviousTrack(type) {
+  function handlerNextPreviousTrack(type) {
     const url = `https://api.spotify.com/v1/me/player/${type}`;
     try {
-    await fetch(url, {
+    fetch(url, {
     method: "POST",
+    body: JSON.stringify(""),
     headers: {
     Authorization: `Bearer ${token}`,
     },
-    });
-
-    // Fetch current track data
+    }).then(async()=>{
+      // Fetch current track data
       const data = await fetchCurrentTrack("https://api.spotify.com/v1/me/player/currently-playing", token);
-      if(!data) return;
-      const {currentTrackData , is_playing}=data;
+      if(!data) throw new Error("No current track");
+      const {currentTrackData , _is_playing}=data;
       if (currentTrackData) {
-              dispatchUser  ({
-              type: 'SET_CURRENTLY_PLAYING_TRACK',
-              currentTrack: currentTrackData,
-            });
-              dispatchUser  ({
-              type: 'SET_ISPLAYING',
-              is_playing: is_playing,
-            });
-          }
-        }
-      // }
+        dispatchUser  ({
+          type: 'SET_CURRENTLY_PLAYING_TRACK',
+          currentTrack: currentTrackData,
+        });
+        dispatchUser  ({
+          type: 'SET_ISPLAYING',
+          is_playing: _is_playing,
+        });
+      }
+    });
+    }
     catch (error) {
       console.error(error);
 }
 }
 
-// console.log(currentTrack);
 
  async function handlerToggleResumeStart(type){
     const url = `https://api.spotify.com/v1/me/player/${type}`;
