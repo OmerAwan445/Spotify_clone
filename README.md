@@ -1,6 +1,3 @@
-# Spotify_clone
-Command to Run before Running App
-npm install
-npm install spotify-web-api
-npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/icons-material
+## Spotify Clone
+This project was created to put my React and React Context API skills to the test.
+The project includes the fundamental CRUD operations. It is not as interactive or feature-rich as the original Spotify App.
