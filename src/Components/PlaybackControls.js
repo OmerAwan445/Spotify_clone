@@ -25,7 +25,7 @@ function PlaybackControls() {
       // Fetch current track data
       const data = await fetchCurrentTrack("https://api.spotify.com/v1/me/player/currently-playing", token);
       if(!data) throw new Error("No current track");
-      const {currentTrackData , _is_playing}=data;
+      const {currentTrackData}=data;
       if (currentTrackData) {
         dispatchUser  ({
           type: 'SET_CURRENTLY_PLAYING_TRACK',
@@ -33,7 +33,7 @@ function PlaybackControls() {
         });
         dispatchUser  ({
           type: 'SET_ISPLAYING',
-          is_playing: _is_playing,
+          is_playing:true,
         });
       }
     });
