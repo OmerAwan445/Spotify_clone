@@ -6,21 +6,19 @@ import { getAccessTokenFromResponse } from './spotify';
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useDataLayer } from './DataLayer/DataLayerProvider';
 import Player from "./Components/Player";
-import fetchCurrentTrack from './Components/fetchCurrentTrack';
+import fetchCurrentTrack from './fetchCurrentTrack';
 
 const spotify = new SpotifyWebApi();
 function App() {
   // It is my discover weekly playlist any playlist id can be added
   const DISCOVER_WEEKLY_PLAYLIST = "37i9dQZEVXcI8s6ltqTt2X";
   const [{token}, dispatchUser] = useDataLayer();
-  // console.log(token);
   useEffect(() => {
     const hash = getAccessTokenFromResponse();
     let { access_token } = hash;
     // resetting the Url of page so that token may not be seen
     window.location.hash = '';
     // /* Remove this when project is finished */
-    // access_token='BQAH-Ds6PgCqRWNteiFi-k05dDk7HwaK-o4rsd_E498nzzX10r6qJdcvz2gnH5A6ehYO1VAlMDY3j4kaeIeIePiJYaMqV-AqqU5cRzpAqX6xYJxFtEPM_DIltXHxbNfvMKjE5ZpDq1B-MDPuFEtkN5OGyxr-KOHXvDWnpDgAPEpC42CxbSjhUVu0B0jVyl78k5Tqtp4WbklMmqAFgjs6'
     if (!access_token) return;
     spotify.setAccessToken(access_token);
     dispatchUser({

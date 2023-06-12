@@ -6,16 +6,16 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 import { useDataLayer } from '../DataLayer/DataLayerProvider';
-import fetchCurrentTrack from './fetchCurrentTrack';
+import fetchCurrentTrack from '../fetchCurrentTrack';
 import '../Styles/PlaybackControls.css'
 
 function PlaybackControls() {
   const [{token,is_playing,currentTrack},dispatchUser] = useDataLayer();
+  const API_ENDPOINT = process.env.REACT_APP_PLAYER_API_ENDPOINT
 
   function handlerNextPreviousTrack(type) {
-    const url = `https://api.spotify.com/v1/me/player/${type}`;
     try {
-    fetch(url, {
+    fetch(`${API_ENDPOINT}/${type}`, {
     method: "POST",
     body: JSON.stringify(""),
     headers: {
@@ -23,7 +23,7 @@ function PlaybackControls() {
     },
     }).then(async()=>{
       // Fetch current track data
-      const data = await fetchCurrentTrack("https://api.spotify.com/v1/me/player/currently-playing", token);
+      const data = await fetchCurrentTrack(`${API_ENDPOINT}/currently-playing`, token);
       if(!data) throw new Error("No current track");
       const {currentTrackData}=data;
       if (currentTrackData) {
@@ -45,9 +45,8 @@ function PlaybackControls() {
 
 
  async function handlerToggleResumeStart(type){
-    const url = `https://api.spotify.com/v1/me/player/${type}`;
     try {
-      await fetch(url, {
+      await fetch(`${API_ENDPOINT}/${type}`, {
         method: "PUT",
         body: JSON.stringify({
           "uris": [`spotify:track:${currentTrack.id}`],

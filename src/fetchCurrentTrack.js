@@ -7,7 +7,6 @@ export default async function fetchCurrentTrack(url, token) {
   });
 
   if (result.status !== 200) return;
-
   const { item, is_playing } = await result.json();
   const currentTrackData = {
     image: item.album.images[2]?.url,

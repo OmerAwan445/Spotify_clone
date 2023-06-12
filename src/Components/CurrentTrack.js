@@ -3,6 +3,7 @@ import { useDataLayer } from '../DataLayer/DataLayerProvider';
 
 function CurrentTrack() {
     const [{currentTrack}] = useDataLayer();
+    console.log(currentTrack);
     return (
 <Fragment>
         <img
